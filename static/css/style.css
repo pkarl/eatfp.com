@@ -1,3 +1,55 @@
 body {
 	font: 14px/1.35em Arial, Helvetica, sans-serif;
+	padding: 3%;
 }
+
+.restaurant-panes {
+	margin: 0 auto;
+}
+
+.pane {
+	width: 92%;
+	margin: 2%;
+	padding: 2%;
+
+	height: auto;
+
+	border: 1px solid red;
+}
+	.pane-active {
+		
+	}
+
+	.pane .photo-frame {
+		max-height: 20em;
+		overflow: hidden;
+	}
+	.pane img {
+		width: 100%;
+		height: auto;
+		vertical-align: bottom;
+	}
+
+.pane td {
+	font-size: 11px;
+	font-family: 'Consolas', 'Monaco', Monospace;
+}
+
+.pane em {
+	color: #b9b9b9;
+	font-style: italic;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+h1, h2, h3, h4 {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.additional-info {
+	display: none;
+}
+	.pane-active .additional-info {
+		display: block;
+	}

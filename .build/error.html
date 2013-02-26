@@ -6,13 +6,13 @@
 	<meta name="viewport" content="width=device-width">
 
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css">
-	<link rel="shortcut icon" href="{{ STATIC_URL }}/favicon.ico"> 
-	<link rel="stylesheet" href="{{ STATIC_URL }}/css/style.css">
-	<link rel="stylesheet" href="{{ STATIC_URL }}/css/chosen.css">
+	<link rel="shortcut icon" href="./static/favicon.ico"> 
+	<link rel="stylesheet" href="./static/css/style.css">
+	<link rel="stylesheet" href="./static/css/chosen.css">
 
-	{% block header %}
+	
 	<title>Welcome</title>
-	{% endblock %}
+	
 
 </head>
 <body>
@@ -55,7 +55,7 @@
 			<h3>Drink</h3>
 
 			<div class="photo-frame">
-				<img class="restaurant-photo" src="{{ STATIC_URL }}/img/raw/drink.jpg">
+				<img class="restaurant-photo" src="./static/img/raw/drink.jpg">
 			</div>
 
 			<div class="additional-info">
@@ -103,7 +103,7 @@
 			<h3>Drink</h3>
 
 			<div class="photo-frame">
-				<img class="restaurant-photo" src="{{ STATIC_URL }}/img/raw/drink.jpg">
+				<img class="restaurant-photo" src="./static/img/raw/drink.jpg">
 			</div>
 
 			<div class="additional-info">
@@ -151,7 +151,7 @@
 			<h3>Drink</h3>
 
 			<div class="photo-frame">
-				<img class="restaurant-photo" src="{{ STATIC_URL }}/img/raw/drink.jpg">
+				<img class="restaurant-photo" src="./static/img/raw/drink.jpg">
 			</div>
 
 			<div class="additional-info">
@@ -199,7 +199,7 @@
 			<h3>Drink</h3>
 
 			<div class="photo-frame">
-				<img class="restaurant-photo" src="{{ STATIC_URL }}/img/raw/drink.jpg">
+				<img class="restaurant-photo" src="./static/img/raw/drink.jpg">
 			</div>
 
 			<div class="additional-info">
@@ -247,7 +247,7 @@
 			<h3>Drink</h3>
 
 			<div class="photo-frame">
-				<img class="restaurant-photo" src="{{ STATIC_URL }}/img/raw/drink.jpg">
+				<img class="restaurant-photo" src="./static/img/raw/drink.jpg">
 			</div>
 
 			<div class="additional-info">
@@ -292,16 +292,37 @@
 
 	</section>
 
-	{% block content %}	{% endblock %}
+	
+<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 
-	{% block scripts %}
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		
+		// Add the missing url to the text
+		$("#url").text(window.location.pathname);
+		
+		// Fix the css locations dynamically
+		$("head link").each(function() {
+			for (var i=0; i<window.location.pathname.split(/\//g).length-2; i++)
+				$(this).attr("href", "../" + $(this).attr("href"));
+		});
+		
+	})
+</script>
+
+<p>
+	Sorry the page <b id="url"></b> could not be found on this server.
+</p>
+
+
+	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js"></script>
-	<script src="{{ STATIC_URL }}/js/chosen.jquery.js"></script>
-	<script src="{{ STATIC_URL }}/js/jquery.hammer.js"></script>
-	<script src="{{ STATIC_URL }}/js/main.js"></script>
-	{% endblock %}
+	<script src="./static/js/chosen.jquery.js"></script>
+	<script src="./static/js/jquery.hammer.js"></script>
+	<script src="./static/js/main.js"></script>
+	
 </body>
 </html>
