@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css">
 	<link rel="shortcut icon" href="./static/favicon.ico"> 
 	<link rel="stylesheet" href="./static/css/style.css">
-	<link rel="stylesheet" href="./static/css/chosen.css">
+	<!-- <link rel="stylesheet" href="./static/css/chosen.css"> -->
 
 	
 	<title>Welcome</title>
@@ -17,278 +17,181 @@
 </head>
 <body>
 
-	<h1>Food of Fort Point</h1>
+	<header>
+		<img src="./static/img/le_text.png" alt="">
+		<img src="./static/img/lefp_logo.png" alt="">
+		<img src="./static/img/with_pk2.png" alt="">
+	</header>
 
 	<nav>
-		<select class="filter-select" data-placeholder="Add a filter..." multiple>
-			<optgroup label="Staples">
-				<option value="patries">pastries</option>
-				<option value="coffee">coffee</option>
-			</optgroup>
-			<optgroup label="Cuisine">
-				<option value="coffee">coffee</option>
-				<option value="donuts">donuts</option>
-				<option value="steak">steak</option>
-				<option value="seafood">seafood</option>
-			</optgroup>
-			<optgroup label="Crowds">
-				<option value="industry">industry</option>
-				<option value="gourmet">gourmet</option>
-				<option value="late night">late night</option>
-				<option value="drunks">drunks</option>
-			</optgroup>
-			<optgroup label="Amenities">
-				<option value="public_bathroom">public toilet</option>
-				<option value="cash_only">cash only</option>
-			</optgroup>
-		</select>
+		<!-- <h class="subtitle">Showing <span id="showing_count">all</span></p> -->
+		<button><a class="filter-button" href="#">Coffee</a><span class="restaurant-count"></span></button>
+		<button><a class="filter-button" href="#">Breakfast</a><span class="restaurant-count"></span></button>
+		<button><a class="filter-button" href="#">Lunch</a><span class="restaurant-count"></span></button>
+		<button><a class="filter-button" href="#">Dinner</a><span class="restaurant-count"></span></button>
+		<button><a class="filter-button" href="#">Bars</a><span class="restaurant-count"></span></button>
+		<button class="active"><a class="filter-button" href="#">Everything.</a><span class="restaurant-count"></span></button>
+		<div class="filter-status"></div>
 	</nav>
 
-	<h2>The Restaurants</h2>
+	<section class="restaurants">
 
-	<section class="restaurant-panes">
-
-		<!-- in the future, break this into templates + maybe jerry rig the blog plugin -->	
-
-		<div class="pane">
-			<!-- title, address, phone, hours, photo, link to menu -->
-			<h3>Drink</h3>
-
-			<div class="photo-frame">
-				<img class="restaurant-photo" src="./static/img/raw/drink.jpg">
-			</div>
-
-			<div class="additional-info">
-
-				<div class="restaurant-address vcard">
-					<div class="adr">
-						<div class="street-address">348 Congress Street</div>
-						<span class="locality">Boston</span>,  
-						<abbr class="region" title="Massachusetts">MA</abbr>&nbsp;&nbsp;
-						<span class="postal-code">02210</span>
+		
+			<div class="restaurant" data-tags="bars, lunch, dinner">
+				<div class="tease">
+					<h3>Barlow&#39;s Restaurant</h3>
+					<div class="photo-frame" style="background: url(./static/img/raw/barlows.jpg) no-repeat center center">
+						<div class="blurb">People seem to like it on Yelp.</div>
 					</div>
-					<div class="tel">
-						<span class="type">Main</span> +1-617-695-1806
+					<div class="pane-controls">
+						<div class="show-button">&middot; &middot; &middot;</div>
+						<div class="hours-today"></div>
 					</div>
-					<a class="fn org url" href="http://drinkfortpoint.com/">restaurant web site</a>
 				</div>
-
-				<!-- TODO: show only today's hours w/an option to show all -->
-				<div class="restaurant-hours">
-					<h4>Hours:</h4>
-
-					<!-- <div id="hour_now"><span>Tuesday hours</span><span> 11:30 am–1:00 am</span></div> -->
-
-					<table>
-						<tbody>
-							<tr><td>Monday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Tuesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Wednesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Thursday</td><td >11:30 am – 1:00 am</td></tr>
-							<tr><td>Friday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Saturday</td><td>11:30 am – 12:00 am</td></tr>
-							<tr><td>Sunday</td><td>Closed</td></tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="menu"><em>Menu not available online</em></div>
-
-			</div>
-
-		</div>
-
-		<div class="pane">
-			<!-- title, address, phone, hours, photo, link to menu -->
-			<h3>Drink</h3>
-
-			<div class="photo-frame">
-				<img class="restaurant-photo" src="./static/img/raw/drink.jpg">
-			</div>
-
-			<div class="additional-info">
-
-				<div class="restaurant-address vcard">
-					<div class="adr">
-						<div class="street-address">348 Congress Street</div>
-						<span class="locality">Boston</span>,  
-						<abbr class="region" title="Massachusetts">MA</abbr>&nbsp;&nbsp;
-						<span class="postal-code">02210</span>
+				<div class="restaurant-details">
+					<div class="restaurant-hours">
+						<table>
+							<tbody>
+								<tr><td>Monday</td><td class="monday">11:00 am – 2:00 am</td></tr>
+								<tr><td>Tuesday</td><td class="tuesday">11:00 am – 2:00 am</td></tr>
+								<tr><td>Wednesday</td><td class="wednesday">11:00 am – 2:00 am</td></tr>
+								<tr><td>Thursday</td><td class="thursday">11:00 am – 2:00 am</td></tr>
+								<tr><td>Friday</td><td class="friday">11:00 am – 2:00 am</td></tr>
+								<tr><td>Saturday</td><td class="saturday">11:00 am – 2:00 am</td></tr>
+								<tr><td>Sunday</td><td class="sunday">10:00 am – 2:00 am</td></tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="tel">
-						<span class="type">Main</span> +1-617-695-1806
+					<div class="tel"><a href="tel:+">(617) 695-1806</a></div>
+					<div class="street-address">241 A St, Boston, MA 02210</div>
+					<div class="url"><a href="http://barlowsrestaurant.com">barlowsrestaurant.com</a></div>
+				</div>
+			</div><!-- restaurant -->
+		
+			<div class="restaurant" data-tags="bars">
+				<div class="tease">
+					<h3>Drink</h3>
+					<div class="photo-frame" style="background: url(./static/img/raw/drink.jpg) no-repeat center center">
+						<div class="blurb">#1 speakeasy in the northeast United States. Bring money.</div>
 					</div>
-					<a class="fn org url" href="http://drinkfortpoint.com/">restaurant web site</a>
-				</div>
-
-				<!-- TODO: show only today's hours w/an option to show all -->
-				<div class="restaurant-hours">
-					<h4>Hours:</h4>
-
-					<!-- <div id="hour_now"><span>Tuesday hours</span><span> 11:30 am–1:00 am</span></div> -->
-
-					<table>
-						<tbody>
-							<tr><td>Monday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Tuesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Wednesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Thursday</td><td >11:30 am – 1:00 am</td></tr>
-							<tr><td>Friday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Saturday</td><td>11:30 am – 12:00 am</td></tr>
-							<tr><td>Sunday</td><td>Closed</td></tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="menu"><em>Menu not available online</em></div>
-
-			</div>
-
-		</div>
-
-		<div class="pane">
-			<!-- title, address, phone, hours, photo, link to menu -->
-			<h3>Drink</h3>
-
-			<div class="photo-frame">
-				<img class="restaurant-photo" src="./static/img/raw/drink.jpg">
-			</div>
-
-			<div class="additional-info">
-
-				<div class="restaurant-address vcard">
-					<div class="adr">
-						<div class="street-address">348 Congress Street</div>
-						<span class="locality">Boston</span>,  
-						<abbr class="region" title="Massachusetts">MA</abbr>&nbsp;&nbsp;
-						<span class="postal-code">02210</span>
+					<div class="pane-controls">
+						<div class="show-button">&middot; &middot; &middot;</div>
+						<div class="hours-today"></div>
 					</div>
-					<div class="tel">
-						<span class="type">Main</span> +1-617-695-1806
+				</div>
+				<div class="restaurant-details">
+					<div class="restaurant-hours">
+						<table>
+							<tbody>
+								<tr><td>Monday</td><td class="monday">4:00 pm – 1:00 am</td></tr>
+								<tr><td>Tuesday</td><td class="tuesday">4:00 pm – 1:00 am</td></tr>
+								<tr><td>Wednesday</td><td class="wednesday">4:00 pm – 1:00 am</td></tr>
+								<tr><td>Thursday</td><td class="thursday">4:00 pm – 1:00 am</td></tr>
+								<tr><td>Friday</td><td class="friday">4:00 pm – 1:00 am</td></tr>
+								<tr><td>Saturday</td><td class="saturday">4:00 pm – 1:00 am</td></tr>
+								<tr><td>Sunday</td><td class="sunday">4:00 pm – 1:00 am</td></tr>
+							</tbody>
+						</table>
 					</div>
-					<a class="fn org url" href="http://drinkfortpoint.com/">restaurant web site</a>
+					<div class="tel"><a href="tel:+">(617) 695-1806</a></div>
+					<div class="street-address">348 Congress St, Boston, MA 02210</div>
+					<div class="url"><a href="http://drinkfortpoint.com">drinkfortpoint.com</a></div>
 				</div>
-
-				<!-- TODO: show only today's hours w/an option to show all -->
-				<div class="restaurant-hours">
-					<h4>Hours:</h4>
-
-					<!-- <div id="hour_now"><span>Tuesday hours</span><span> 11:30 am–1:00 am</span></div> -->
-
-					<table>
-						<tbody>
-							<tr><td>Monday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Tuesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Wednesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Thursday</td><td >11:30 am – 1:00 am</td></tr>
-							<tr><td>Friday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Saturday</td><td>11:30 am – 12:00 am</td></tr>
-							<tr><td>Sunday</td><td>Closed</td></tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="menu"><em>Menu not available online</em></div>
-
-			</div>
-
-		</div>
-
-		<div class="pane">
-			<!-- title, address, phone, hours, photo, link to menu -->
-			<h3>Drink</h3>
-
-			<div class="photo-frame">
-				<img class="restaurant-photo" src="./static/img/raw/drink.jpg">
-			</div>
-
-			<div class="additional-info">
-
-				<div class="restaurant-address vcard">
-					<div class="adr">
-						<div class="street-address">348 Congress Street</div>
-						<span class="locality">Boston</span>,  
-						<abbr class="region" title="Massachusetts">MA</abbr>&nbsp;&nbsp;
-						<span class="postal-code">02210</span>
+			</div><!-- restaurant -->
+		
+			<div class="restaurant" data-tags="coffee">
+				<div class="tease">
+					<h3>Dunkin Donuts</h3>
+					<div class="photo-frame" style="background: url(./static/img/raw/dunkin.jpg) no-repeat center center">
+						<div class="blurb">Don't pretend that donuts (or donut-like sandwiches) are meals.</div>
 					</div>
-					<div class="tel">
-						<span class="type">Main</span> +1-617-695-1806
+					<div class="pane-controls">
+						<div class="show-button">&middot; &middot; &middot;</div>
+						<div class="hours-today"></div>
 					</div>
-					<a class="fn org url" href="http://drinkfortpoint.com/">restaurant web site</a>
 				</div>
-
-				<!-- TODO: show only today's hours w/an option to show all -->
-				<div class="restaurant-hours">
-					<h4>Hours:</h4>
-
-					<!-- <div id="hour_now"><span>Tuesday hours</span><span> 11:30 am–1:00 am</span></div> -->
-
-					<table>
-						<tbody>
-							<tr><td>Monday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Tuesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Wednesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Thursday</td><td >11:30 am – 1:00 am</td></tr>
-							<tr><td>Friday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Saturday</td><td>11:30 am – 12:00 am</td></tr>
-							<tr><td>Sunday</td><td>Closed</td></tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="menu"><em>Menu not available online</em></div>
-
-			</div>
-
-		</div>
-
-		<div class="pane">
-			<!-- title, address, phone, hours, photo, link to menu -->
-			<h3>Drink</h3>
-
-			<div class="photo-frame">
-				<img class="restaurant-photo" src="./static/img/raw/drink.jpg">
-			</div>
-
-			<div class="additional-info">
-
-				<div class="restaurant-address vcard">
-					<div class="adr">
-						<div class="street-address">348 Congress Street</div>
-						<span class="locality">Boston</span>,  
-						<abbr class="region" title="Massachusetts">MA</abbr>&nbsp;&nbsp;
-						<span class="postal-code">02210</span>
+				<div class="restaurant-details">
+					<div class="restaurant-hours">
+						<table>
+							<tbody>
+								<tr><td>Monday</td><td class="monday">6:00 am – 7:00 pm</td></tr>
+								<tr><td>Tuesday</td><td class="tuesday">6:00 am – 7:00 pm</td></tr>
+								<tr><td>Wednesday</td><td class="wednesday">6:00 am – 7:00 pm</td></tr>
+								<tr><td>Thursday</td><td class="thursday">6:00 am – 7:00 pm</td></tr>
+								<tr><td>Friday</td><td class="friday">6:00 am – 7:00 pm</td></tr>
+								<tr><td>Saturday</td><td class="saturday">Closed</td></tr>
+								<tr><td>Sunday</td><td class="sunday">Closed</td></tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="tel">
-						<span class="type">Main</span> +1-617-695-1806
+					<div class="tel"><a href="tel:+">(617) 338-4550</a></div>
+					<div class="street-address">268 Summer St, Boston, MA 02210</div>
+					<div class="url"><a href="http://"></a></div>
+				</div>
+			</div><!-- restaurant -->
+		
+			<div class="restaurant" data-tags="bars, lunch, dinner">
+				<div class="tease">
+					<h3>Papagayo</h3>
+					<div class="photo-frame" style="background: url(./static/img/raw/papagayo.png) no-repeat center center">
+						<div class="blurb">Expensive mexican food, and the saddest drink in America. <br/>The Rona'rita.</div>
 					</div>
-					<a class="fn org url" href="http://drinkfortpoint.com/">restaurant web site</a>
+					<div class="pane-controls">
+						<div class="show-button">&middot; &middot; &middot;</div>
+						<div class="hours-today"></div>
+					</div>
 				</div>
-
-				<!-- TODO: show only today's hours w/an option to show all -->
-				<div class="restaurant-hours">
-					<h4>Hours:</h4>
-
-					<!-- <div id="hour_now"><span>Tuesday hours</span><span> 11:30 am–1:00 am</span></div> -->
-
-					<table>
-						<tbody>
-							<tr><td>Monday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Tuesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Wednesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Thursday</td><td >11:30 am – 1:00 am</td></tr>
-							<tr><td>Friday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Saturday</td><td>11:30 am – 12:00 am</td></tr>
-							<tr><td>Sunday</td><td>Closed</td></tr>
-						</tbody>
-					</table>
+				<div class="restaurant-details">
+					<div class="restaurant-hours">
+						<table>
+							<tbody>
+								<tr><td>Monday</td><td class="monday">11:30 am - 10:00 pm</td></tr>
+								<tr><td>Tuesday</td><td class="tuesday">11:30 am - 10:00 pm</td></tr>
+								<tr><td>Wednesday</td><td class="wednesday">11:30 am - 10:00 pm</td></tr>
+								<tr><td>Thursday</td><td class="thursday">11:30 am - 11:00 pm</td></tr>
+								<tr><td>Friday</td><td class="friday">11:30 am - 11:00 pm</td></tr>
+								<tr><td>Saturday</td><td class="saturday">11:30 am - 11:00 pm</td></tr>
+								<tr><td>Sunday</td><td class="sunday">11:30 am - 9:00 pm</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tel"><a href="tel:+">(617) 423-1000</a></div>
+					<div class="street-address">283 Summer St, Boston, MA 02210</div>
+					<div class="url"><a href="http://www.papagayoboston.com">www.papagayoboston.com</a></div>
 				</div>
-
-				<div class="menu"><em>Menu not available online</em></div>
-
-			</div>
-
-		</div>
+			</div><!-- restaurant -->
+		
+			<div class="restaurant" data-tags="breakfast, lunch, dinner">
+				<div class="tease">
+					<h3>Sportello</h3>
+					<div class="photo-frame" style="background: url(./static/img/raw/sportello.jpg) no-repeat center center">
+						<div class="blurb">Delightful daily breakfast, lunch, and dinner. Charismatic staff.</div>
+					</div>
+					<div class="pane-controls">
+						<div class="show-button">&middot; &middot; &middot;</div>
+						<div class="hours-today"></div>
+					</div>
+				</div>
+				<div class="restaurant-details">
+					<div class="restaurant-hours">
+						<table>
+							<tbody>
+								<tr><td>Monday</td><td class="monday">7:00 am – 10:00 pm</td></tr>
+								<tr><td>Tuesday</td><td class="tuesday">7:00 am – 10:00 pm</td></tr>
+								<tr><td>Wednesday</td><td class="wednesday">7:00 am – 10:00 pm</td></tr>
+								<tr><td>Thursday</td><td class="thursday">7:00 am – 10:00 pm</td></tr>
+								<tr><td>Friday</td><td class="friday">7:00 am – 11:00 pm</td></tr>
+								<tr><td>Saturday</td><td class="saturday">10:30 am – 11:00 pm</td></tr>
+								<tr><td>Sunday</td><td class="sunday">10:30 am – 10:00 pm</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tel"><a href="tel:+">(617) 737-1234</a></div>
+					<div class="street-address">348 Congress St, Boston, MA 02210</div>
+					<div class="url"><a href="http://www.sportelloboston.com">www.sportelloboston.com</a></div>
+				</div>
+			</div><!-- restaurant -->
+		
 
 	</section>
 
@@ -296,11 +199,11 @@
 
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+	<!-- // <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script> -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js"></script>
-	<script src="./static/js/chosen.jquery.js"></script>
-	<script src="./static/js/jquery.hammer.js"></script>
+	<!-- // <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js"></script> -->
+	<!-- // <script src="./static/js/chosen.jquery.js"></script> -->
+	<!-- // <script src="./static/js/jquery.hammer.js"></script> -->
 	<script src="./static/js/main.js"></script>
 	
 </body>

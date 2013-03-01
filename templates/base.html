@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css">
 	<link rel="shortcut icon" href="{{ STATIC_URL }}/favicon.ico"> 
 	<link rel="stylesheet" href="{{ STATIC_URL }}/css/style.css">
-	<link rel="stylesheet" href="{{ STATIC_URL }}/css/chosen.css">
+	<!-- <link rel="stylesheet" href="{{ STATIC_URL }}/css/chosen.css"> -->
 
 	{% block header %}
 	<title>Welcome</title>
@@ -17,278 +17,57 @@
 </head>
 <body>
 
-	<h1>Food of Fort Point</h1>
+	<header>
+		<img src="{{ STATIC_URL }}/img/le_text.png" alt="">
+		<img src="{{ STATIC_URL }}/img/lefp_logo.png" alt="">
+		<img src="{{ STATIC_URL }}/img/with_pk2.png" alt="">
+	</header>
 
 	<nav>
-		<select class="filter-select" data-placeholder="Add a filter..." multiple>
-			<optgroup label="Staples">
-				<option value="patries">pastries</option>
-				<option value="coffee">coffee</option>
-			</optgroup>
-			<optgroup label="Cuisine">
-				<option value="coffee">coffee</option>
-				<option value="donuts">donuts</option>
-				<option value="steak">steak</option>
-				<option value="seafood">seafood</option>
-			</optgroup>
-			<optgroup label="Crowds">
-				<option value="industry">industry</option>
-				<option value="gourmet">gourmet</option>
-				<option value="late night">late night</option>
-				<option value="drunks">drunks</option>
-			</optgroup>
-			<optgroup label="Amenities">
-				<option value="public_bathroom">public toilet</option>
-				<option value="cash_only">cash only</option>
-			</optgroup>
-		</select>
+		<!-- <h class="subtitle">Showing <span id="showing_count">all</span></p> -->
+		<button><a class="filter-button" href="#">Coffee</a><span class="restaurant-count"></span></button>
+		<button><a class="filter-button" href="#">Breakfast</a><span class="restaurant-count"></span></button>
+		<button><a class="filter-button" href="#">Lunch</a><span class="restaurant-count"></span></button>
+		<button><a class="filter-button" href="#">Dinner</a><span class="restaurant-count"></span></button>
+		<button><a class="filter-button" href="#">Bars</a><span class="restaurant-count"></span></button>
+		<button class="active"><a class="filter-button" href="#">Everything.</a><span class="restaurant-count"></span></button>
+		<div class="filter-status"></div>
 	</nav>
 
-	<h2>The Restaurants</h2>
+	<section class="restaurants">
 
-	<section class="restaurant-panes">
-
-		<!-- in the future, break this into templates + maybe jerry rig the blog plugin -->	
-
-		<div class="pane">
-			<!-- title, address, phone, hours, photo, link to menu -->
-			<h3>Drink</h3>
-
-			<div class="photo-frame">
-				<img class="restaurant-photo" src="{{ STATIC_URL }}/img/raw/drink.jpg">
-			</div>
-
-			<div class="additional-info">
-
-				<div class="restaurant-address vcard">
-					<div class="adr">
-						<div class="street-address">348 Congress Street</div>
-						<span class="locality">Boston</span>,  
-						<abbr class="region" title="Massachusetts">MA</abbr>&nbsp;&nbsp;
-						<span class="postal-code">02210</span>
+		{% for r in restaurants %}
+			<div class="restaurant" data-tags="{{ r.tags }}">
+				<div class="tease">
+					<h3>{{ r.name }}</h3>
+					<div class="photo-frame" style="background: url({{ STATIC_URL }}/img/raw/{{ r.image }}) no-repeat center center">
+						<div class="blurb">{{ r.blurb|safe }}</div>
 					</div>
-					<div class="tel">
-						<span class="type">Main</span> +1-617-695-1806
+					<div class="pane-controls">
+						<div class="show-button">&middot; &middot; &middot;</div>
+						<div class="hours-today"></div>
 					</div>
-					<a class="fn org url" href="http://drinkfortpoint.com/">restaurant web site</a>
 				</div>
-
-				<!-- TODO: show only today's hours w/an option to show all -->
-				<div class="restaurant-hours">
-					<h4>Hours:</h4>
-
-					<!-- <div id="hour_now"><span>Tuesday hours</span><span> 11:30 am–1:00 am</span></div> -->
-
-					<table>
-						<tbody>
-							<tr><td>Monday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Tuesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Wednesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Thursday</td><td >11:30 am – 1:00 am</td></tr>
-							<tr><td>Friday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Saturday</td><td>11:30 am – 12:00 am</td></tr>
-							<tr><td>Sunday</td><td>Closed</td></tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="menu"><em>Menu not available online</em></div>
-
-			</div>
-
-		</div>
-
-		<div class="pane">
-			<!-- title, address, phone, hours, photo, link to menu -->
-			<h3>Drink</h3>
-
-			<div class="photo-frame">
-				<img class="restaurant-photo" src="{{ STATIC_URL }}/img/raw/drink.jpg">
-			</div>
-
-			<div class="additional-info">
-
-				<div class="restaurant-address vcard">
-					<div class="adr">
-						<div class="street-address">348 Congress Street</div>
-						<span class="locality">Boston</span>,  
-						<abbr class="region" title="Massachusetts">MA</abbr>&nbsp;&nbsp;
-						<span class="postal-code">02210</span>
+				<div class="restaurant-details">
+					<div class="restaurant-hours">
+						<table>
+							<tbody>
+								<tr><td>Monday</td><td class="monday">{{ r.hours_mon }}</td></tr>
+								<tr><td>Tuesday</td><td class="tuesday">{{ r.hours_tue }}</td></tr>
+								<tr><td>Wednesday</td><td class="wednesday">{{ r.hours_wed }}</td></tr>
+								<tr><td>Thursday</td><td class="thursday">{{ r.hours_thu }}</td></tr>
+								<tr><td>Friday</td><td class="friday">{{ r.hours_fri }}</td></tr>
+								<tr><td>Saturday</td><td class="saturday">{{ r.hours_sat }}</td></tr>
+								<tr><td>Sunday</td><td class="sunday">{{ r.hours_sun }}</td></tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="tel">
-						<span class="type">Main</span> +1-617-695-1806
-					</div>
-					<a class="fn org url" href="http://drinkfortpoint.com/">restaurant web site</a>
+					<div class="tel"><a href="tel:+{{ r.clickable_tel }}">{{ r.telephone }}</a></div>
+					<div class="street-address">{{ r.address }}</div>
+					<div class="url"><a href="http://{{ r.url }}">{{ r.url }}</a></div>
 				</div>
-
-				<!-- TODO: show only today's hours w/an option to show all -->
-				<div class="restaurant-hours">
-					<h4>Hours:</h4>
-
-					<!-- <div id="hour_now"><span>Tuesday hours</span><span> 11:30 am–1:00 am</span></div> -->
-
-					<table>
-						<tbody>
-							<tr><td>Monday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Tuesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Wednesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Thursday</td><td >11:30 am – 1:00 am</td></tr>
-							<tr><td>Friday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Saturday</td><td>11:30 am – 12:00 am</td></tr>
-							<tr><td>Sunday</td><td>Closed</td></tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="menu"><em>Menu not available online</em></div>
-
-			</div>
-
-		</div>
-
-		<div class="pane">
-			<!-- title, address, phone, hours, photo, link to menu -->
-			<h3>Drink</h3>
-
-			<div class="photo-frame">
-				<img class="restaurant-photo" src="{{ STATIC_URL }}/img/raw/drink.jpg">
-			</div>
-
-			<div class="additional-info">
-
-				<div class="restaurant-address vcard">
-					<div class="adr">
-						<div class="street-address">348 Congress Street</div>
-						<span class="locality">Boston</span>,  
-						<abbr class="region" title="Massachusetts">MA</abbr>&nbsp;&nbsp;
-						<span class="postal-code">02210</span>
-					</div>
-					<div class="tel">
-						<span class="type">Main</span> +1-617-695-1806
-					</div>
-					<a class="fn org url" href="http://drinkfortpoint.com/">restaurant web site</a>
-				</div>
-
-				<!-- TODO: show only today's hours w/an option to show all -->
-				<div class="restaurant-hours">
-					<h4>Hours:</h4>
-
-					<!-- <div id="hour_now"><span>Tuesday hours</span><span> 11:30 am–1:00 am</span></div> -->
-
-					<table>
-						<tbody>
-							<tr><td>Monday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Tuesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Wednesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Thursday</td><td >11:30 am – 1:00 am</td></tr>
-							<tr><td>Friday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Saturday</td><td>11:30 am – 12:00 am</td></tr>
-							<tr><td>Sunday</td><td>Closed</td></tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="menu"><em>Menu not available online</em></div>
-
-			</div>
-
-		</div>
-
-		<div class="pane">
-			<!-- title, address, phone, hours, photo, link to menu -->
-			<h3>Drink</h3>
-
-			<div class="photo-frame">
-				<img class="restaurant-photo" src="{{ STATIC_URL }}/img/raw/drink.jpg">
-			</div>
-
-			<div class="additional-info">
-
-				<div class="restaurant-address vcard">
-					<div class="adr">
-						<div class="street-address">348 Congress Street</div>
-						<span class="locality">Boston</span>,  
-						<abbr class="region" title="Massachusetts">MA</abbr>&nbsp;&nbsp;
-						<span class="postal-code">02210</span>
-					</div>
-					<div class="tel">
-						<span class="type">Main</span> +1-617-695-1806
-					</div>
-					<a class="fn org url" href="http://drinkfortpoint.com/">restaurant web site</a>
-				</div>
-
-				<!-- TODO: show only today's hours w/an option to show all -->
-				<div class="restaurant-hours">
-					<h4>Hours:</h4>
-
-					<!-- <div id="hour_now"><span>Tuesday hours</span><span> 11:30 am–1:00 am</span></div> -->
-
-					<table>
-						<tbody>
-							<tr><td>Monday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Tuesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Wednesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Thursday</td><td >11:30 am – 1:00 am</td></tr>
-							<tr><td>Friday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Saturday</td><td>11:30 am – 12:00 am</td></tr>
-							<tr><td>Sunday</td><td>Closed</td></tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="menu"><em>Menu not available online</em></div>
-
-			</div>
-
-		</div>
-
-		<div class="pane">
-			<!-- title, address, phone, hours, photo, link to menu -->
-			<h3>Drink</h3>
-
-			<div class="photo-frame">
-				<img class="restaurant-photo" src="{{ STATIC_URL }}/img/raw/drink.jpg">
-			</div>
-
-			<div class="additional-info">
-
-				<div class="restaurant-address vcard">
-					<div class="adr">
-						<div class="street-address">348 Congress Street</div>
-						<span class="locality">Boston</span>,  
-						<abbr class="region" title="Massachusetts">MA</abbr>&nbsp;&nbsp;
-						<span class="postal-code">02210</span>
-					</div>
-					<div class="tel">
-						<span class="type">Main</span> +1-617-695-1806
-					</div>
-					<a class="fn org url" href="http://drinkfortpoint.com/">restaurant web site</a>
-				</div>
-
-				<!-- TODO: show only today's hours w/an option to show all -->
-				<div class="restaurant-hours">
-					<h4>Hours:</h4>
-
-					<!-- <div id="hour_now"><span>Tuesday hours</span><span> 11:30 am–1:00 am</span></div> -->
-
-					<table>
-						<tbody>
-							<tr><td>Monday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Tuesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Wednesday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Thursday</td><td >11:30 am – 1:00 am</td></tr>
-							<tr><td>Friday</td><td>11:30 am – 1:00 am</td></tr>
-							<tr><td>Saturday</td><td>11:30 am – 12:00 am</td></tr>
-							<tr><td>Sunday</td><td>Closed</td></tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="menu"><em>Menu not available online</em></div>
-
-			</div>
-
-		</div>
+			</div><!-- restaurant -->
+		{% endfor %}
 
 	</section>
 
@@ -296,11 +75,11 @@
 
 	{% block scripts %}
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+	<!-- // <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script> -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js"></script>
-	<script src="{{ STATIC_URL }}/js/chosen.jquery.js"></script>
-	<script src="{{ STATIC_URL }}/js/jquery.hammer.js"></script>
+	<!-- // <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js"></script> -->
+	<!-- // <script src="{{ STATIC_URL }}/js/chosen.jquery.js"></script> -->
+	<!-- // <script src="{{ STATIC_URL }}/js/jquery.hammer.js"></script> -->
 	<script src="{{ STATIC_URL }}/js/main.js"></script>
 	{% endblock %}
 </body>

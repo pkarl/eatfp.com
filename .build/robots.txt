@@ -1,1 +1,6 @@
 index.html
+restaurants/barlows.html
+restaurants/drink.html
+restaurants/dunkindonuts.html
+restaurants/papagayo.html
+restaurants/sportello.html
