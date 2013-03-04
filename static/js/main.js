@@ -96,12 +96,15 @@ $(document).ready(function() {
 	var days = ['sunday', 'monday','tuesday','wednesday','thursday','friday','saturday'];
 	var now = new Date();
 	var ht, today = days[ now.getDay() ];
-	$('.' + today ).addClass('today');
+	$('.' + today + ' td').addClass('today');
 
 	$('.restaurant').each(function(i, val) {
 		var r = $(this);
 		ht = r.find('.hours-today');
-		ht.html(today.capitalize() + ' &mdash; ' + r.find('.today').text());
+
+		console.log(r, r.find('.today'));
+
+		ht.html(today.capitalize() + ' &mdash; ' + r.find('.today.hours').text());
 	});
 
 	function writeFilterStatus() {

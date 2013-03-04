@@ -1,6 +1,16 @@
 index.html
+restaurants/anthonys.html
+restaurants/aura.html
 restaurants/barlows.html
+restaurants/barringtoncoffee.html
+restaurants/capiz.html
 restaurants/drink.html
 restaurants/dunkindonuts.html
+restaurants/luckys.html
+restaurants/menton.html
+restaurants/meritage.html
+restaurants/metrocafe.html
+restaurants/miel.html
+restaurants/mortons.html
 restaurants/papagayo.html
 restaurants/sportello.html
