@@ -87,7 +87,6 @@ $(document).ready(function() {
 		}
 
 		writeFilterStatus();
-
 		e.preventDefault();
 	});
 
@@ -101,9 +100,6 @@ $(document).ready(function() {
 	$('.restaurant').each(function(i, val) {
 		var r = $(this);
 		ht = r.find('.hours-today');
-
-		console.log(r, r.find('.today'));
-
 		ht.html(today.capitalize() + ' &mdash; ' + r.find('.today.hours').text());
 	});
 

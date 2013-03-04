@@ -17,7 +17,7 @@
 			<div class="restaurant" data-tags="{{ r.tags }}">
 				<div class="tease">
 					<h3>{{ r.name|safe }}</h3>
-					<div class="photo-frame" style="background: url({{ STATIC_URL }}/img/raw/{{ r.image }}) no-repeat center center">
+					<div class="photo-frame" style="background: url({{ STATIC_URL }}/img/processed/{{ r.image }}) no-repeat center center">
 						<div class="blurb">{{ r.blurb|safe }}</div>
 					</div>
 					<div class="pane-controls">
