@@ -38,19 +38,21 @@ $(document).ready(function() {
 
 		var others = $('.restaurant').not(restaurant);
 
-		others.find('.photo-frame').slideDown({queue: false});
-		others.find('.pane-controls').slideDown({queue: false});
+		var aOpts = {queue: false, useTranslate3d: true};
+
+		others.find('.photo-frame').slideDown(aOpts);
+		others.find('.pane-controls').slideDown(aOpts);
 
 		if(details.is(':visible')){
-			details.slideUp({queue: false});
-			photo.slideDown({queue: false});
-			controls.slideDown({queue: false});
+			details.slideUp(aOpts);
+			photo.slideDown(aOpts);
+			controls.slideDown(aOpts);
 		} else {
 
-			$('.restaurant-details').slideUp({queue: false});
+			$('.restaurant-details').slideUp(aOpts);
 			
-			photo.slideUp({queue: false});
-			controls.slideUp({queue: false});
+			photo.slideUp(aOpts);
+			controls.slideUp(aOpts);
 
 			details.slideDown({
 				queue: false, 
@@ -87,7 +89,8 @@ $(document).ready(function() {
 		}
 
 		writeFilterStatus();
-		e.preventDefault();
+		// e.preventDefault();
+		return false;
 	});
 
 
@@ -115,4 +118,22 @@ $(document).ready(function() {
 			status_el.append( ', hiding ' + num_hidden );
 		}
 	}
+
+	// swap out retina imagery
+	if (window.devicePixelRatio == 2) {
+
+          var images = $("img.hires");
+
+          // loop through the images and make them hi-res
+          for(var i = 0; i < images.length; i++) {
+
+            // create new image name
+            var imageType = images[i].src.substr(-4);
+            var imageName = images[i].src.substr(0, images[i].src.length - 4);
+            imageName += "@2x" + imageType;
+
+            //rename image
+            images[i].src = imageName;
+          }
+     }
 });
