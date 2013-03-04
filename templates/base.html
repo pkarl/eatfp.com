@@ -63,8 +63,8 @@
 						</table>
 					</div>
 					<div class="tel"><a href="tel:+{{ r.clickable_tel }}">{{ r.telephone }}</a></div>
-					<div class="street-address">{{ r.address }}</div>
 					<div class="url"><a href="http://{{ r.url }}">{{ r.url }}</a></div>
+					<div class="street-address">{{ r.address }}</div>
 				</div>
 			</div><!-- restaurant -->
 		{% endfor %}
@@ -75,12 +75,22 @@
 
 	{% block scripts %}
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<!-- // <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script> -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-	<!-- // <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js"></script> -->
-	<!-- // <script src="{{ STATIC_URL }}/js/chosen.jquery.js"></script> -->
-	<!-- // <script src="{{ STATIC_URL }}/js/jquery.hammer.js"></script> -->
 	<script src="{{ STATIC_URL }}/js/main.js"></script>
 	{% endblock %}
+
+	<script type="text/javascript">
+	  var _gauges = _gauges || [];
+	  (function() {
+		var t   = document.createElement('script');
+		t.type  = 'text/javascript';
+		t.async = true;
+		t.id    = 'gauges-tracker';
+		t.setAttribute('data-site-id', '5133fa3df5a1f56d0a000053');
+		t.src = '//secure.gaug.es/track.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(t, s);
+	  })();
+	</script>
 </body>
 </html>

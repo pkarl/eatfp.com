@@ -39,7 +39,7 @@ $(document).ready(function() {
 		var others = $('.restaurant').not(restaurant);
 
 		others.find('.photo-frame').slideDown({queue: false});
-		others.find('.photo-grame').slideDown({queue: false});
+		others.find('.pane-controls').slideDown({queue: false});
 
 		if(details.is(':visible')){
 			details.slideUp({queue: false});
