@@ -115,7 +115,7 @@ $(document).ready(function() {
 		if(th.length > 0) {
 			ht.html(today.capitalize() + ' &mdash; ' + th.text());
 		} else {
-			ht.html( '<span class="n-a">hours unavaialable</span>' );
+			ht.html( '<span class="n-a">hours unavailable</span>' );
 		}
 	});
 
