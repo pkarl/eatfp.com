@@ -32,39 +32,43 @@ $(document).ready(function() {
 	$('.restaurants').on('click', '.restaurant', function(e) {
 
 		var restaurant = $(this);
+
 		var details = restaurant.find('.restaurant-details');
 		var photo = restaurant.find('.photo-frame');
 		var controls = restaurant.find('.pane-controls');
-
 		var others = $('.restaurant').not(restaurant);
 
-		var aOpts = {queue: false, useTranslate3d: true};
+		var opts = {queue: false, useTranslate3d: true};
 
-		others.find('.photo-frame').slideDown(aOpts);
-		others.find('.pane-controls').slideDown(aOpts);
+		// reset other panels
+		others.find('.photo-frame').slideDown(opts);
+		others.find('.pane-controls').slideDown(opts);
 
 		if(details.is(':visible')){
-			details.slideUp(aOpts);
-			photo.slideDown(aOpts);
-			controls.slideDown(aOpts);
+			// we can see the panel being clicked on...
+			details.slideUp(opts);
+			photo.slideDown(opts);
+			controls.slideDown(opts);
 		} else {
-
-			$('.restaurant-details').slideUp(aOpts);
+			// if this is a new panel...
+			$('.restaurant-details').slideUp(opts);
 			
-			photo.slideUp(aOpts);
-			controls.slideUp(aOpts);
-
+			photo.slideUp(opts);
+			controls.slideUp(opts);
 			details.slideDown({
 				queue: false, 
 				complete: function() {
+					// scroll to the top of our panel and give us a little space
 					$.scrollTo( restaurant, 250, {offset: -10, axis: 'y'} );
 				}
 			});
-
 		}
-
-		return false;
+		e.stopPropagation();
 	});
+
+	$('.restaurants').on('click', 'a', function(e) {
+		e.stopPropagation();
+	});	
 
 	// filter all of the things
 	$('nav').on('click', 'button', function(e) {
@@ -73,7 +77,6 @@ $(document).ready(function() {
 		$(this).addClass('active');
 
 		var tag = $(this).find('.filter-button').text().toLowerCase();
-
 		if( tag == 'everything.') {
 			$('.restaurant').show();
 		} else {
@@ -87,10 +90,14 @@ $(document).ready(function() {
 				}
 			});
 		}
-
 		writeFilterStatus();
-		// e.preventDefault();
 		return false;
+	});
+
+	// loop through telephone numbers + make them clickable
+	$('.phone-number').each(function() {
+		var clickable_num = $(this).text().match(/[0-9]+/g).join('');
+		$(this).attr('href', 'tel:+1' + clickable_num);
 	});
 
 
@@ -106,6 +113,7 @@ $(document).ready(function() {
 		ht.html(today.capitalize() + ' &mdash; ' + r.find('.today.hours').text());
 	});
 
+	// give the user "X RESTAURANTS HIDDEN" copy
 	function writeFilterStatus() {
 		var num_visible = $('.restaurant').filter(':visible').length;
 		var num_hidden = $('.restaurant').not(':visible').length;

@@ -26,9 +26,27 @@
 					</div>
 				</div>
 				<div class="restaurant-details">
-					<div class="tel"><a href="tel:+{{ r.clickable_tel }}">{{ r.telephone }}</a></div>
-					<div class="url"><a href="http://{{ r.url }}">{{ r.url }}</a></div>
-					<div class="street-address">{{ r.address }}</div>
+					<div class="tel">
+						{% if r.telephone %}
+							<a class="phone-number" href="tel:+{{ r.clickable_tel }}">{{ r.telephone }}</a>
+						{% else %}
+							<span class="n-a">I couldn't find their number</span>
+						{% endif %}
+						</div>
+					<div class="url">
+						{% if r.url %}
+							<a href="http://{{ r.url }}">{{ r.url }}</a>
+						{% else %}
+							<span class="n-a">website not useful</a>
+						{% endif %}
+					</div>
+					<div class="street-address">
+						{% if r.address %}
+							{{ r.address }}
+						{% else %}
+							<span class="n-a">I don't know where it is.</a>
+						{% endif %}
+					</div>
 					<div class="restaurant-hours">
 						<table>
 							<tbody>

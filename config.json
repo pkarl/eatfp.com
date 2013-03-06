@@ -1,5 +1,5 @@
 {
     "aws-access-key": "AKIAI66SLWO7FNMUAINQ", 
-    "aws-bucket-name": "foodtest", 
-    "aws-bucket-website": "foodtest.s3-website-us-east-1.amazonaws.com"
+    "aws-bucket-name": "eatfp.com", 
+    "aws-bucket-website": "eatfp.com.s3-website-us-east-1.amazonaws.com"
 }

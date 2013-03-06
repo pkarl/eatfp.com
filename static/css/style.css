@@ -114,11 +114,10 @@ nav {
 			text-align: center;
 			line-height: 24px;
 
-			border-top-right-radius: 12px;
-			border-top-left-radius: 12px;
-
 			background-color: rgb(0, 0, 0);
 			background-color: rgba(0, 0, 0, 0.6);
+
+			/*text-shadow: 0px 0px 5px #000;*/
 		}
 	.pane-controls {
 		position: relative;
@@ -126,6 +125,7 @@ nav {
 		.hours-today {
 			padding: 15px;
 			font-size: 12px;
+			text-shadow: 1px 1px 1px #111;
 		}
 
 		.show-button {
@@ -196,3 +196,6 @@ nav {
 		color: #f0514e;
 		font-weight: bold;
 	}
+.n-a {
+	color: #b9b9b9;
+}
