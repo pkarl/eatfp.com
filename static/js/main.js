@@ -104,13 +104,19 @@ $(document).ready(function() {
 	// put today's hours when we can see them
 	var days = ['sunday', 'monday','tuesday','wednesday','thursday','friday','saturday'];
 	var now = new Date();
-	var ht, today = days[ now.getDay() ];
+	var ht, th, today = days[ now.getDay() ];
 	$('.' + today + ' td').addClass('today');
 
 	$('.restaurant').each(function(i, val) {
 		var r = $(this);
 		ht = r.find('.hours-today');
-		ht.html(today.capitalize() + ' &mdash; ' + r.find('.today.hours').text());
+		th = r.find('.today.hours');
+
+		if(th.length > 0) {
+			ht.html(today.capitalize() + ' &mdash; ' + th.text());
+		} else {
+			ht.html( '<span class="n-a">hours unavaialable</span>' );
+		}
 	});
 
 	// give the user "X RESTAURANTS HIDDEN" copy

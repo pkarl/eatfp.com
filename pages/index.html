@@ -18,7 +18,7 @@
 				<div class="tease">
 					<h3>{{ r.name|safe }}</h3>
 					<div class="photo-frame" style="background: url({{ STATIC_URL }}/img/processed/{{ r.image }}) no-repeat center center">
-						<div class="blurb">{{ r.blurb|safe }}</div>
+						<div class="blurb">{% if r.blurb %}{{ r.blurb|safe }}{% endif %}</div>
 					</div>
 					<div class="pane-controls">
 						<div class="show-button">&middot; &middot; &middot;</div>
@@ -48,6 +48,7 @@
 						{% endif %}
 					</div>
 					<div class="restaurant-hours">
+						{% if r.hours_mon %}
 						<table>
 							<tbody>
 								<tr class="monday"><td>Monday</td><td class='hours'>{{ r.hours_mon }}</td></tr>
@@ -59,6 +60,9 @@
 								<tr class="sunday"><td>Sunday</td><td class='hours'>{{ r.hours_sun }}</td></tr>
 							</tbody>
 						</table>
+						{% else %}
+							<div class="n-a">Their hours aren't online. I'll find out and post them here!</div>
+						{% endif %}
 					</div>
 				</div>
 			</div><!-- restaurant -->

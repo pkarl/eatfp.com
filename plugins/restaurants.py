@@ -57,6 +57,7 @@ def preBuild(site):
 			postContext['hours_sun'] = find('hours_sun')
 			postContext['address'] = find('address')
 			postContext['telephone'] = find('telephone')
+			postContext['notes'] = find('notes')
 			postContext['url'] = find('url')
 			postContext['image'] = find('image')
 
