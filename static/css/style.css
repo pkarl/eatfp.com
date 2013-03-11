@@ -102,7 +102,7 @@ nav {
 	}
 	.photo-frame {
 		height: 250px;
-		position: relative;
+		position: relative; 
 	}
 		.blurb {
 			position: absolute;
@@ -193,7 +193,7 @@ nav {
 		width: 90px;
 		padding-left: 20px;
 	}
-	td.today {
+	.today {
 		color: #f0514e;
 		font-weight: bold;
 	}
